@@ -8,6 +8,10 @@ if [ ! -z "$USERNAME" ] && [ ! -z "$USERPASSWORD" ]; then
   if [ "$USERSUDO" == "yes" ]; then
     adduser "$USERNAME" sudo
   fi
+
+  # Touch sudo warning file
+  touch /home/$USERNAME/.sudo_as_admin_successful
+  chown $USERNAME /home/$USERNAME/.sudo_as_admin_successful
 fi
 
 if [ ! -z "$ROOTPASSWORD" ]; then
